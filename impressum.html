@@ -10,20 +10,26 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <style>
 @font-face{font-family:"Archivo";font-weight:400 900;font-stretch:62% 125%;font-display:swap;src:url(fonts/archivo.woff2) format("woff2")}
-:root{--bg:#fff;--fg:#0E1230;--muted:#5A5F7A;--cobalt:#2A3BDB;--sun:#FFCC33;--line:#E2E4EE}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0B0D1E;--fg:#EFF0FA;--muted:#9EA3C0;--cobalt:#8D9BFF;--line:#24284A;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#0B0D1E;--fg:#EFF0FA;--muted:#9EA3C0;--cobalt:#8D9BFF;--line:#24284A;color-scheme:dark}
+:root{--bg:#fff;--fg:#0E1230;--muted:#5A5F7A;--cobalt:#2A3BDB;--sun:#FFCC33;--line:#E2E4EE;--soft:#F3F4FA}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0B0D1E;--fg:#EFF0FA;--muted:#9EA3C0;--cobalt:#8D9BFF;--line:#24284A;--soft:#14172E;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0B0D1E;--fg:#EFF0FA;--muted:#9EA3C0;--cobalt:#8D9BFF;--line:#24284A;--soft:#14172E;color-scheme:dark}
 *{box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--fg);font:400 1.0625rem/1.65 "Archivo",system-ui,sans-serif}
-.wrap{max-width:760px;margin:0 auto;padding:32px 16px 64px}
+.wrap{max-width:780px;margin:0 auto;padding:32px 16px 64px}
 .back{display:inline-block;margin-bottom:32px;color:var(--cobalt);font-weight:700;text-decoration:none}
 .logo{font-weight:800;font-stretch:115%}
 .logo s{text-decoration-color:var(--sun);text-decoration-thickness:.2em}
 h1{font-size:clamp(2rem,6vw,3rem);font-weight:850;font-stretch:115%;line-height:1;margin:8px 0 28px}
-h2{font-size:1.25rem;margin:32px 0 8px;font-stretch:110%}
-p,li{color:var(--fg)}
+h2{font-size:1.3rem;margin:40px 0 8px;font-stretch:110%;scroll-margin-top:16px}
+h3{font-size:1.05rem;margin:22px 0 4px}
+p,li{overflow-wrap:anywhere}
+ul{padding-left:1.2em}
 a{color:var(--cobalt)}
 .todo{background:var(--sun);color:#0E1230;padding:0 .2em}
+.box{background:var(--soft);border-left:4px solid var(--sun);padding:14px 18px;border-radius:6px;margin:16px 0}
+.toc{columns:2 260px;font-size:.95rem;padding-left:1.2em}
+.lead{font-size:1.15rem}
 footer{border-top:1px solid var(--line);margin-top:48px;padding-top:20px;color:var(--muted);font-size:.92rem}
 </style>
 </head>
@@ -33,7 +39,7 @@ footer{border-top:1px solid var(--line);margin-top:48px;padding-top:20px;color:v
 <h1>Impressum</h1>
 
 <h2>Angaben gemäß § 5 DDG</h2>
-<p><span class="todo">[Vor- und Nachname]</span><br>Werbung ohne Blabla<br><span class="todo">[Straße Hausnummer]</span><br><span class="todo">[PLZ Ort]</span></p>
+<p>Werbung ohne Blabla<br>Inhaber: <span class="todo">[Vor- und Nachname]</span><br><span class="todo">[Straße Hausnummer der Geschäftsadresse]</span><br><span class="todo">[PLZ Ort]</span></p>
 <h2>Kontakt</h2>
 <p>Telefon: <span class="todo">[Telefonnummer]</span><br>E-Mail: <a href="mailto:hallo@werbungohneblabla.de">hallo@werbungohneblabla.de</a></p>
 <h2>Umsatzsteuer</h2>
@@ -42,6 +48,8 @@ footer{border-top:1px solid var(--line);margin-top:48px;padding-top:20px;color:v
 <p><span class="todo">[Vor- und Nachname]</span>, Anschrift wie oben</p>
 <h2>Verbraucherstreitbeilegung</h2>
 <p>Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+<h2>Haftung für Links</h2>
+<p>Diese Website enthält Links zu externen Websites, auf deren Inhalte wir keinen Einfluss haben. Für diese Inhalte ist der jeweilige Anbieter verantwortlich. Bei Bekanntwerden von Rechtsverletzungen entfernen wir solche Links umgehend.</p>
 
 <footer>© 2026 Werbung ohne Blabla · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></footer>
 </div>

@@ -154,7 +154,12 @@ input,select{font:inherit;font-size:1rem;font-weight:400;padding:.75rem .9rem;bo
 .faq summary::after{content:"+";font:700 1.3rem var(--mono);color:var(--cobalt)}
 .faq details[open] summary::after{content:"\2013"}
 .faq details p{color:var(--muted);margin-top:10px}
-#cal-inline{min-height:620px;width:100%;overflow:auto}
+#cal-inline{width:100%;overflow:auto}
+#cal-inline:not(:has(.consent)){min-height:620px}
+.consent{display:flex;flex-direction:column;gap:12px}
+.consent p{color:var(--muted);font-size:.95rem}
+.consent a{color:var(--cobalt)}
+.consent .row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
 footer{border-top:1px solid var(--line);padding-block:36px;color:var(--muted);font-size:.92rem}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
 footer nav{display:flex;flex-wrap:wrap;gap:18px}footer a{color:inherit}
@@ -314,8 +319,10 @@ function loadCal(){
 Cal("init","termin",{origin:"https://cal.com"});
 Cal.ns.termin("inline",{elementOrSelector:"#cal-inline",config:{layout:"month_view"},calLink:CAL_LINK});
 Cal.ns.termin("ui",{layout:"month_view",cssVarsPerTheme:{light:{"cal-brand":"#2A3BDB"},dark:{"cal-brand":"#FFCC33"}}});}
-if(CAL_LINK){document.getElementById('fallback').style.display='none';document.getElementById('cal-inline').hidden=false;
-const io=new IntersectionObserver(es=>{if(es.some(x=>x.isIntersecting)){io.disconnect();loadCal()}},{rootMargin:'600px'});io.observe(document.getElementById('termin'));}
+if(CAL_LINK){const ci=document.getElementById('cal-inline'),fb=document.getElementById('fallback');fb.style.display='none';ci.hidden=false;
+ci.innerHTML='<div class="consent"><strong>Online-Kalender laden?</strong><p>Für die Terminbuchung nutzen wir Cal.com (Cal.com, Inc., USA). Erst wenn du auf „Kalender laden“ klickst, wird eine Verbindung zu Cal.com aufgebaut. Mehr dazu in der <a href="datenschutz.html#termin">Datenschutzerklärung</a>.</p><div class="row"><button class="btn dark" type="button" id="cal-ok">Kalender laden</button><button class="copy" type="button" id="cal-no">Lieber per E-Mail anfragen</button></div></div>';
+document.getElementById('cal-ok').onclick=()=>{ci.innerHTML='';loadCal()};
+document.getElementById('cal-no').onclick=()=>{ci.hidden=true;fb.style.display='flex'};}
 </script>
 </body>
 </html>
