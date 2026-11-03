@@ -173,7 +173,7 @@ footer nav{display:flex;flex-wrap:wrap;gap:18px}footer a{color:inherit}
   <span class="tag" style="opacity:.8">Für alle, die ihren Job lieben. Die Werbung machen wir.</span>
   <h1 style="margin-top:18px">Werbung<br>ohne <span class="strike">Blabla</span>.</h1>
   <p class="lead">Website, Reels und digitale Stempelkarte für deinen Laden. Ein Ansprechpartner, ein Festpreis, keine Fachbegriffe.</p>
-  <div class="row"><a class="btn" href="#termin">Gratis-Gespräch buchen →</a><small>20 Min. · unverbindlich</small></div>
+  <div class="row"><a class="btn" href="#termin">Gratis-Gespräch buchen →</a><small>20 Min. am Telefon · unverbindlich</small></div>
   <div class="facts">
     <span><b>→</b> Bei Google gefunden</span>
     <span><b>→</b> Auf Instagram gesehen</span>
@@ -237,7 +237,7 @@ footer nav{display:flex;flex-wrap:wrap;gap:18px}footer a{color:inherit}
   <div class="flow">
     <span class="tag" style="color:var(--cobalt)">Ablauf</span>
     <ol class="steps">
-      <li><div><strong>Gespräch</strong><span>20 Minuten über deinen Laden und was du erreichen willst.</span></div></li>
+      <li><div><strong>Gespräch</strong><span>20 Minuten am Telefon über deinen Laden und was du erreichen willst.</span></div></li>
       <li><div><strong>Entwurf &amp; Dreh</strong><span>Du siehst eine Vorschau. Bei Premium drehen wir vor Ort.</span></div></li>
       <li><div><strong>Live gehen</strong><span>Seite online, QR-Codes auf der Theke, erste Reels gepostet.</span></div></li>
     </ol>
@@ -268,19 +268,19 @@ footer nav{display:flex;flex-wrap:wrap;gap:18px}footer a{color:inherit}
   <div class="side">
     <span class="tag" style="color:var(--cobalt)">Termin</span>
     <h2 style="margin-top:12px">Kurz <span class="hl">reden.</span></h2>
-    <p>Wähle Tag und Uhrzeit. Das Gespräch ist kostenlos, per Telefon oder Video.</p>
+    <p>Such dir einen freien Termin im Kalender aus. Wir rufen dich an, das Gespräch ist kostenlos. Alles Weitere besprechen wir danach, persönlich oder per Video.</p>
     <div class="contact"><strong>Lieber direkt schreiben?</strong><div class="mailrow"><span id="mail">hallo@werbungohneblabla.de</span><button class="copy" id="copy" type="button">Kopieren</button></div></div>
   </div>
   <div class="panel" style="background:var(--bg)">
     <div id="cal-inline" hidden></div>
     <div id="fallback" style="display:flex;flex-direction:column;gap:16px">
-    <div class="days" id="days" role="group" aria-label="Tag wählen"></div>
-    <div class="slots" id="slots" role="group" aria-label="Uhrzeit wählen"></div>
+    <p style="color:var(--muted);font-size:.95rem">Schreib uns kurz, wir melden uns und vereinbaren einen Termin für das Telefonat.</p>
     <form id="bookform">
       <label>Name<input id="b-name" required placeholder="Max Muster"></label>
       <label>Branche<select id="b-branche" required><option value="" selected disabled>Bitte auswählen</option><option>Barbershop / Friseur</option><option>Beauty / Kosmetik / Nagelstudio</option><option>Café / Bäckerei</option><option>Restaurant / Imbiss</option><option>Einzelhandel / Laden</option><option>Handwerk</option><option>Fitness / Sportstudio</option><option>Physiotherapie / Praxis</option><option>Steuerberatung</option><option>Rechtsanwalt / Kanzlei</option><option>Immobilien / Makler</option><option>Andere Branche</option></select></label>
-      <label class="full">E-Mail<input id="b-mail" type="email" required placeholder="max@beispiel.de"></label>
-      <button class="btn dark full" type="submit">Termin anfragen</button>
+      <label>E-Mail<input id="b-mail" type="email" required placeholder="max@beispiel.de"></label>
+      <label>Telefon (optional)<input id="b-tel" type="tel" placeholder="0511 123456"></label>
+      <button class="btn dark full" type="submit">Rückruf anfragen</button>
     </form>
     <p class="confirm" id="confirm" hidden></p>
     </div>
@@ -294,19 +294,11 @@ footer nav{display:flex;flex-wrap:wrap;gap:18px}footer a{color:inherit}
 </div></footer>
 
 <script>
-const daysEl=document.getElementById('days'),slotsEl=document.getElementById('slots');let sel={day:null,slot:null};
-const wd=['So','Mo','Di','Mi','Do','Fr','Sa'],times=['09:30','11:00','13:30','15:00','17:30'];
-const days=[];for(let d=new Date(),i=0;days.length<8;i++){const x=new Date(d);x.setDate(d.getDate()+i+1);if(x.getDay()&&x.getDay()<6)days.push(x)}
-function pick(g,b){g.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true')}
-days.forEach((x,i)=>{const b=document.createElement('button');b.type='button';b.className='day';b.setAttribute('aria-pressed','false');b.innerHTML='<small>'+wd[x.getDay()]+'</small>'+x.getDate()+'.'+(x.getMonth()+1)+'.';b.onclick=()=>{pick(daysEl,b);sel.day=x;slots(i)};daysEl.appendChild(b);if(!i)b.click()});
-function slots(i){slotsEl.innerHTML='';sel.slot=null;times.filter((t,k)=>(k+i)%3!==1).forEach(t=>{const b=document.createElement('button');b.type='button';b.className='slot';b.textContent=t;b.setAttribute('aria-pressed','false');b.onclick=()=>{pick(slotsEl,b);sel.slot=t};slotsEl.appendChild(b)})}
 document.getElementById('bookform').addEventListener('submit',e=>{e.preventDefault();const c=document.getElementById('confirm');c.hidden=false;
-if(!sel.slot){c.textContent='Bitte wähle zuerst eine Uhrzeit.';return}
-const n=document.getElementById('b-name').value,br=document.getElementById('b-branche').value,m=document.getElementById('b-mail').value;
-const when=wd[sel.day.getDay()]+', '+sel.day.toLocaleDateString('de-DE')+' um '+sel.slot+' Uhr';
-const txt='Hallo,\n\nich möchte gern ein kostenloses Erstgespräch.\n\nWunschtermin: '+when+'\nName: '+n+'\nBranche: '+br+'\nE-Mail: '+m+'\n\nViele Grüße\n'+n;
-location.href='mailto:hallo@werbungohneblabla.de?subject='+encodeURIComponent('Terminanfrage '+when)+'&body='+encodeURIComponent(txt);
-c.textContent='Dein Mailprogramm öffnet sich mit der fertigen Anfrage für '+when+'. Einfach absenden, du bekommst schnell eine Bestätigung.'});
+const n=document.getElementById('b-name').value,br=document.getElementById('b-branche').value,m=document.getElementById('b-mail').value,t=document.getElementById('b-tel').value;
+const txt='Hallo,\n\nich möchte gern ein kostenloses Erstgespräch per Telefon.\n\nName: '+n+'\nBranche: '+br+'\nE-Mail: '+m+(t?'\nTelefon: '+t:'')+'\n\nViele Grüße\n'+n;
+location.href='mailto:hallo@werbungohneblabla.de?subject='+encodeURIComponent('Anfrage Erstgespräch')+'&body='+encodeURIComponent(txt);
+c.textContent='Dein Mailprogramm öffnet sich mit der fertigen Anfrage. Einfach absenden, wir melden uns schnell bei dir.'});
 document.getElementById('copy').addEventListener('click',()=>{const t=document.getElementById('mail').textContent,b=document.getElementById('copy');
 const ok=()=>{b.textContent='Kopiert';setTimeout(()=>b.textContent='Kopieren',1600)};
 const fb=()=>{const r=document.createRange();r.selectNodeContents(document.getElementById('mail'));const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Markiert';};
