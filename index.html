@@ -155,20 +155,11 @@ input,select{font:inherit;font-size:1rem;font-weight:400;padding:.75rem .9rem;bo
 .faq details[open] summary::after{content:"\2013"}
 .faq details p{color:var(--muted);margin-top:10px}
 #cal-inline{width:100%;overflow:auto}
-#cal-inline:not(:has(.consent)){min-height:620px}
-.consent{display:flex;flex-direction:column;gap:12px}
-.consent p{color:var(--muted);font-size:.95rem}
-.consent a{color:var(--cobalt)}
-.consent .row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
-.calhint{font-size:.9rem;color:var(--muted)}
-.calhint button{font:inherit;color:var(--cobalt);background:none;border:0;padding:0;text-decoration:underline;cursor:pointer}
-#cookiebar{position:fixed;left:16px;right:16px;bottom:16px;z-index:50;max-width:560px;margin-inline:auto;background:var(--bg);color:var(--fg);border:2px solid var(--fg);border-radius:10px;padding:16px 18px;display:flex;flex-direction:column;gap:12px;box-shadow:0 8px 30px rgba(0,0,0,.18);font-size:.92rem}
-#cookiebar[hidden]{display:none}
-#cookiebar p{color:var(--muted)}
-#cookiebar a{color:var(--cobalt)}
-#cookiebar .row{display:flex;flex-wrap:wrap;gap:10px}
-#cookiebar .btn{padding:.6rem 1rem;font-size:.9rem}
-footer nav button{font:inherit;color:inherit;background:none;border:0;padding:0;text-decoration:underline;cursor:pointer}
+#cal-inline:not([hidden]){min-height:620px}
+.calstart{display:flex;flex-direction:column;align-items:flex-start;gap:14px}
+.calstart p{color:var(--muted)}
+.calstart small{color:var(--muted);font-size:.82rem}
+.calstart a{color:var(--cobalt)}
 footer{border-top:1px solid var(--line);padding-block:36px;color:var(--muted);font-size:.92rem}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
 footer nav{display:flex;flex-wrap:wrap;gap:18px}footer a{color:inherit}
@@ -277,22 +268,16 @@ footer nav{display:flex;flex-wrap:wrap;gap:18px}footer a{color:inherit}
   <div class="side">
     <span class="tag" style="color:var(--cobalt)">Termin</span>
     <h2 style="margin-top:12px">Kurz <span class="hl">reden.</span></h2>
-    <p>Such dir einen freien Termin aus oder schreib uns kurz. Wir rufen dich an, das Gespräch ist kostenlos. Alles Weitere besprechen wir danach, persönlich oder per Video.</p>
+    <p>Such dir einen freien Termin aus. Wir rufen dich an, das Gespräch ist kostenlos. Alles Weitere besprechen wir danach, persönlich oder per Video.</p>
     <div class="contact"><strong>Lieber direkt schreiben?</strong><div class="mailrow"><span id="mail">hallo@werbungohneblabla.de</span><button class="copy" id="copy" type="button">Kopieren</button></div></div>
   </div>
   <div class="panel" style="background:var(--bg)">
     <div id="cal-inline" hidden></div>
-    <div id="fallback" style="display:flex;flex-direction:column;gap:16px">
-    <p style="color:var(--muted);font-size:.95rem">Schreib uns kurz, wir melden uns und vereinbaren einen Termin für das Telefonat.</p>
-    <form id="bookform">
-      <label>Name<input id="b-name" required placeholder="Max Muster"></label>
-      <label>Branche<select id="b-branche" required><option value="" selected disabled>Bitte auswählen</option><option>Barbershop / Friseur</option><option>Beauty / Kosmetik / Nagelstudio</option><option>Café / Bäckerei</option><option>Restaurant / Imbiss</option><option>Einzelhandel / Laden</option><option>Handwerk</option><option>Fitness / Sportstudio</option><option>Physiotherapie / Praxis</option><option>Steuerberatung</option><option>Rechtsanwalt / Kanzlei</option><option>Immobilien / Makler</option><option>Andere Branche</option></select></label>
-      <label>E-Mail<input id="b-mail" type="email" required placeholder="max@beispiel.de"></label>
-      <label>Telefon (optional)<input id="b-tel" type="tel" placeholder="0511 123456"></label>
-      <button class="btn dark full" type="submit">Rückruf anfragen</button>
-    </form>
-    <p class="confirm" id="confirm" hidden></p>
-      <p class="calhint">Lieber direkt einen festen Termin wählen? <button type="button" id="cal-show">Online-Kalender anzeigen</button> (lädt Cal.com, siehe <a href="datenschutz.html#termin">Datenschutz</a>)</p>
+    <div id="cal-start" class="calstart">
+      <strong>20 Minuten am Telefon, kostenlos</strong>
+      <p>Such dir im Kalender einen freien Termin aus. Wir rufen dich zur gewählten Zeit an.</p>
+      <button class="btn dark" type="button" id="cal-ok">Passenden Termin auswählen</button>
+      <small>Mit dem Klick lädst du den Kalender von Cal.com (USA). Mehr dazu in der <a href="datenschutz.html#termin">Datenschutzerklärung</a>.</small>
     </div>
   </div>
 </div></section>
@@ -300,16 +285,10 @@ footer nav{display:flex;flex-wrap:wrap;gap:18px}footer a{color:inherit}
 </main>
 <footer><div class="wrap">
   <span>© 2026 Werbung ohne Blabla</span>
-  <nav><a href="#fragen">Fragen</a><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a><button type="button" id="ck-open">Cookie-Einstellungen</button></nav>
+  <nav><a href="#fragen">Fragen</a><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a></nav>
 </div></footer>
-<div id="cookiebar" hidden role="dialog" aria-label="Cookie-Hinweis"><p><strong style="color:var(--fg)">Kurz zu Cookies</strong><br>Für die Terminbuchung binden wir den Kalender von Cal.com (USA) ein. Der kann Cookies setzen. Ohne Zustimmung kannst du uns trotzdem über das Formular schreiben. <a href="datenschutz.html#cookies">Mehr dazu</a></p><div class="row"><button class="btn dark" type="button" id="ck-ok">Kalender erlauben</button><button class="copy" type="button" id="ck-no">Nur notwendige</button></div></div>
 
 <script>
-document.getElementById('bookform').addEventListener('submit',e=>{e.preventDefault();const c=document.getElementById('confirm');c.hidden=false;
-const n=document.getElementById('b-name').value,br=document.getElementById('b-branche').value,m=document.getElementById('b-mail').value,t=document.getElementById('b-tel').value;
-const txt='Hallo,\n\nich möchte gern ein kostenloses Erstgespräch per Telefon.\n\nName: '+n+'\nBranche: '+br+'\nE-Mail: '+m+(t?'\nTelefon: '+t:'')+'\n\nViele Grüße\n'+n;
-location.href='mailto:hallo@werbungohneblabla.de?subject='+encodeURIComponent('Anfrage Erstgespräch')+'&body='+encodeURIComponent(txt);
-c.textContent='Dein Mailprogramm öffnet sich mit der fertigen Anfrage. Einfach absenden, wir melden uns schnell bei dir.'});
 document.getElementById('copy').addEventListener('click',()=>{const t=document.getElementById('mail').textContent,b=document.getElementById('copy');
 const ok=()=>{b.textContent='Kopiert';setTimeout(()=>b.textContent='Kopieren',1600)};
 const fb=()=>{const r=document.createRange();r.selectNodeContents(document.getElementById('mail'));const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Markiert';};
@@ -322,19 +301,8 @@ function loadCal(){
 Cal("init","termin",{origin:"https://cal.com"});
 Cal.ns.termin("inline",{elementOrSelector:"#cal-inline",config:{layout:"month_view"},calLink:CAL_LINK});
 Cal.ns.termin("ui",{layout:"month_view",cssVarsPerTheme:{light:{"cal-brand":"#2A3BDB"},dark:{"cal-brand":"#FFCC33"}}});}
-/* Cookie-Banner: Cal.com lädt nur nach Zustimmung. Die Wahl wird lokal gespeichert (technisch notwendig). */
-const KEY='wob-cal',ci=document.getElementById('cal-inline'),fb=document.getElementById('fallback'),bar=document.getElementById('cookiebar');
-function getC(){try{return localStorage.getItem(KEY)}catch(e){return null}}
-function setC(v){try{localStorage.setItem(KEY,v)}catch(e){}}
-let calOn=false;
-function showCal(){if(calOn)return;calOn=true;fb.style.display='none';ci.hidden=false;ci.innerHTML='';loadCal()}
-function accept(){setC('ja');bar.hidden=true;showCal()}
-function decline(){setC('nein');bar.hidden=true}
-document.getElementById('ck-ok').onclick=accept;
-document.getElementById('ck-no').onclick=decline;
-document.getElementById('cal-show').onclick=accept;
-document.getElementById('ck-open').onclick=()=>{if(getC()==='ja'){try{localStorage.removeItem(KEY)}catch(e){}location.reload()}else bar.hidden=false};
-const c0=getC();if(c0==='ja')showCal();else if(c0!=='nein')bar.hidden=false;
+/* Cal.com lädt erst nach Klick auf den Button (Einwilligung nach § 25 TDDDG) */
+document.getElementById('cal-ok').onclick=()=>{document.getElementById('cal-start').remove();const ci=document.getElementById('cal-inline');ci.hidden=false;loadCal()};
 </script>
 </body>
 </html>
