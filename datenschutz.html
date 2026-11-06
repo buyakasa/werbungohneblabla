@@ -30,6 +30,19 @@ a{color:var(--cobalt)}
 .box{background:var(--soft);border-left:4px solid var(--sun);padding:14px 18px;border-radius:6px;margin:16px 0}
 .toc{columns:2 260px;font-size:.95rem;padding-left:1.2em}
 .lead{font-size:1.15rem}
+[hidden]{display:none!important}
+form{display:flex;flex-direction:column;gap:18px;margin-top:20px}
+label{display:flex;flex-direction:column;gap:6px;font-weight:600}
+label.wahl{flex-direction:row;align-items:center;gap:10px;font-weight:400}
+fieldset{border:0;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+legend{font-weight:600;padding:0;margin-bottom:6px}
+input:not([type=radio]),textarea{font:inherit;padding:.75rem .9rem;border:1.5px solid var(--muted);border-radius:6px;background:var(--bg);color:var(--fg);width:100%}
+.fang{position:absolute;left:-9999px}
+.knopf{display:inline-block;align-self:flex-start;font:700 1rem/1 "Archivo",system-ui,sans-serif;padding:1.05rem 1.5rem;border:0;border-radius:6px;background:var(--sun);color:#0E1230;text-decoration:none;cursor:pointer}
+.fehler{color:#B3261E;font-weight:600}
+.hinweis,#beleg{background:var(--soft);border-left:4px solid var(--sun);padding:14px 18px;border-radius:6px;margin:16px 0}
+#beleg dt{font-weight:600;margin-top:10px}#beleg dd{margin:0}
+@media print{.back,footer,.knopf{display:none}}
 footer{border-top:1px solid var(--line);margin-top:48px;padding-top:20px;color:var(--muted);font-size:.92rem}
 </style>
 </head>
@@ -78,7 +91,7 @@ footer{border-top:1px solid var(--line);margin-top:48px;padding-top:20px;color:v
 <p>Einzige Ausnahme ist der Online-Kalender von Cal.com: Er wird nur geladen, wenn du vorher aktiv auf „Passenden Termin auswählen“ klickst. Erst dann kann Cal.com Daten auf deinem Gerät speichern oder auslesen. Rechtsgrundlage ist deine Einwilligung nach § 25 Abs. 1 TDDDG und Art. 6 Abs. 1 lit. a DSGVO. Details in <a href="#termin">Abschnitt 5</a>.</p>
 
 <h2 id="kontakt">4. Kontakt per E-Mail und Telefon</h2>
-<p>Wenn du uns per E-Mail oder Telefon kontaktierst, verarbeiten wir deine Angaben (z. B. Name, Betrieb, Branche, E-Mail-Adresse, Telefonnummer, Inhalt der Nachricht), um deine Anfrage zu beantworten. Das Anfrageformular auf dieser Seite sendet selbst keine Daten, sondern öffnet nur dein eigenes E-Mail-Programm mit einer vorausgefüllten Nachricht.</p>
+<p>Wenn du uns per E-Mail oder Telefon kontaktierst, verarbeiten wir deine Angaben (z. B. Name, Betrieb, Branche, E-Mail-Adresse, Telefonnummer, Inhalt der Nachricht), um deine Anfrage zu beantworten.</p>
 <p>Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO, wenn deine Anfrage auf einen Vertrag zielt, sonst Art. 6 Abs. 1 lit. f DSGVO (unser Interesse, Anfragen zu beantworten). Wir löschen die Daten, sobald die Anfrage erledigt ist und keine gesetzlichen Aufbewahrungspflichten entgegenstehen.</p>
 
 <h2 id="termin">5. Terminbuchung über Cal.com</h2>
@@ -102,6 +115,7 @@ footer{border-top:1px solid var(--line);margin-top:48px;padding-top:20px;color:v
 <li>Inhalte, die du uns für deine Website oder Werbung gibst: Texte, Fotos, Logos, Öffnungszeiten, Preislisten</li>
 </ul>
 <p>Rechtsgrundlagen sind Art. 6 Abs. 1 lit. b DSGVO (Vertrag) und Art. 6 Abs. 1 lit. c DSGVO (steuer- und handelsrechtliche Pflichten). Empfänger sind nur die Dienstleister, die wir für die jeweilige Leistung brauchen (siehe Abschnitte 8 bis 11), sowie bei Bedarf unsere Steuerberatung und Behörden, wenn wir gesetzlich dazu verpflichtet sind.</p>
+<p><strong>Kündigung und Widerruf online:</strong> Wenn du das Formular auf „Verträge hier kündigen“ oder „Vertrag widerrufen“ nutzt, verarbeiten wir deine Angaben (Name, Betrieb, Vertrag, E-Mail-Adresse, Art und Zeitpunkt der Erklärung), um die Erklärung zu bearbeiten und dir den Eingang zu bestätigen. Das Formular speichert die Angaben in einer Tabelle bei Google und versendet die Bestätigung über Google (Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland). Rechtsgrundlagen sind Art. 6 Abs. 1 lit. b und c DSGVO.</p>
 <div class="box"><strong>Wichtig für Geschäftskunden:</strong> Soweit wir im Rahmen unserer Leistungen personenbezogene Daten <em>deiner</em> Kundschaft oder Mitarbeitenden verarbeiten (z. B. bei der Stempelkarte), handeln wir als Auftragsverarbeiter nach Art. 28 DSGVO. Verantwortlich ist dann dein Betrieb. Dafür schließen wir mit dir einen Vertrag zur Auftragsverarbeitung (AVV) und stellen dir die passenden Datenschutztexte für deine eigene Website zur Verfügung.</div>
 
 <h2 id="websites">8. Leistung: Websites, Domains und E-Mail-Postfächer</h2>
@@ -124,7 +138,7 @@ footer{border-top:1px solid var(--line);margin-top:48px;padding-top:20px;color:v
 </ul>
 
 <h2 id="reels">10. Leistung: Reels und Videodreh</h2>
-<p>Für Reels und Kurzvideos drehen wir vor Ort in deinem Betrieb. Dabei können Personen erkennbar ins Bild kommen: du, deine Mitarbeitenden oder Kundschaft.</p>
+<p>Den Dreh für Reels und Kurzvideos stimmen wir individuell mit dir ab. Wenn wir in deinem Betrieb drehen, können Personen erkennbar ins Bild kommen: du, deine Mitarbeitenden oder Kundschaft.</p>
 <ul>
 <li><strong>Aufnahmen von Personen</strong> machen und veröffentlichen wir nur mit deren Einwilligung (Art. 6 Abs. 1 lit. a DSGVO, § 22 KUG). Wir stellen dafür eine schriftliche Einwilligungserklärung bereit. Personen, die zufällig und nur als Beiwerk im Hintergrund erscheinen, machen wir unkenntlich oder schneiden sie heraus, wenn sie das wünschen.</li>
 <li><strong>Einwilligung widerrufen:</strong> Ein Widerruf gilt für die Zukunft. Bereits veröffentlichte Videos entfernen wir bzw. der Betrieb dann aus den eigenen Kanälen, soweit das möglich ist.</li>
@@ -179,7 +193,7 @@ footer{border-top:1px solid var(--line);margin-top:48px;padding-top:20px;color:v
 <p><strong>Änderungen:</strong> Wir passen diese Datenschutzerklärung an, wenn sich unsere Leistungen oder die Rechtslage ändern. Es gilt die jeweils hier veröffentlichte Fassung.</p>
 <p style="color:var(--muted)">Stand: November 2026</p>
 
-<footer>© 2026 Werbung ohne Blabla · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></footer>
+<footer>© 2026 Werbung ohne Blabla · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · <a href="widerruf.html">Vertrag widerrufen</a> · <a href="kuendigen.html">Verträge hier kündigen</a></footer>
 </div>
 </body>
 </html>

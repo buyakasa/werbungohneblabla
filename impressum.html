@@ -30,6 +30,19 @@ a{color:var(--cobalt)}
 .box{background:var(--soft);border-left:4px solid var(--sun);padding:14px 18px;border-radius:6px;margin:16px 0}
 .toc{columns:2 260px;font-size:.95rem;padding-left:1.2em}
 .lead{font-size:1.15rem}
+[hidden]{display:none!important}
+form{display:flex;flex-direction:column;gap:18px;margin-top:20px}
+label{display:flex;flex-direction:column;gap:6px;font-weight:600}
+label.wahl{flex-direction:row;align-items:center;gap:10px;font-weight:400}
+fieldset{border:0;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+legend{font-weight:600;padding:0;margin-bottom:6px}
+input:not([type=radio]),textarea{font:inherit;padding:.75rem .9rem;border:1.5px solid var(--muted);border-radius:6px;background:var(--bg);color:var(--fg);width:100%}
+.fang{position:absolute;left:-9999px}
+.knopf{display:inline-block;align-self:flex-start;font:700 1rem/1 "Archivo",system-ui,sans-serif;padding:1.05rem 1.5rem;border:0;border-radius:6px;background:var(--sun);color:#0E1230;text-decoration:none;cursor:pointer}
+.fehler{color:#B3261E;font-weight:600}
+.hinweis,#beleg{background:var(--soft);border-left:4px solid var(--sun);padding:14px 18px;border-radius:6px;margin:16px 0}
+#beleg dt{font-weight:600;margin-top:10px}#beleg dd{margin:0}
+@media print{.back,footer,.knopf{display:none}}
 footer{border-top:1px solid var(--line);margin-top:48px;padding-top:20px;color:var(--muted);font-size:.92rem}
 </style>
 </head>
@@ -51,7 +64,7 @@ footer{border-top:1px solid var(--line);margin-top:48px;padding-top:20px;color:v
 <h2>Haftung für Links</h2>
 <p>Diese Website enthält Links zu externen Websites, auf deren Inhalte wir keinen Einfluss haben. Für diese Inhalte ist der jeweilige Anbieter verantwortlich. Bei Bekanntwerden von Rechtsverletzungen entfernen wir solche Links umgehend.</p>
 
-<footer>© 2026 Werbung ohne Blabla · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></footer>
+<footer>© 2026 Werbung ohne Blabla · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · <a href="widerruf.html">Vertrag widerrufen</a> · <a href="kuendigen.html">Verträge hier kündigen</a></footer>
 </div>
 </body>
 </html>
